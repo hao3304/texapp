@@ -3,7 +3,6 @@ const cmd = require('cmd-promise')
 const Tex = require('../tools/texTool');
 const mkfiles = require('mkfiles');
 const path = require('path');
-var exec = require('child_process').exec;
 
 module.exports = class extends Base {
     async indexAction() {
@@ -19,25 +18,10 @@ module.exports = class extends Base {
                 }]
             });
             let filepath = process.cwd() + `/tex/${timestamp}.tex`;
-           // const rep =  await cmd(`cd tex && pdflatex ${filepath} `);
-           //
-           //  cmd(`pdflatex ${filepath}`).then(out => {
-           //      console.log('out =', out)
-           //  }).catch(err => {
-           //      console.log('err =', err)
-           //  })
+            const rep =  await cmd(`cd tex && pdflatex ${filepath} `);
 
-            var last = exec(`pdflatex ${filepath}`);
-            last.stdout.on('data', function (data) {
-                console.log('标准输出：' + data);
-            });
-
-            last.on('exit', function (code) {
-                console.log('子进程已关闭，代码：' + code);
-            });
-           // this.display();
-           // console.log(rep);
-          //  this.download(path.join(think.ROOT_PATH, `./tex/${timestamp}.pdf`));
+            console.log(rep);
+            this.download(path.join(think.ROOT_PATH, `./tex/${timestamp}.pdf`));
         }else{
             this.display();
         }
