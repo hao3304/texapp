@@ -19,6 +19,7 @@ exports.getTex = function(max,min,col,row){
         }
     }
     let tpl = `
+        \\documentclass[12pt,a4paper]{article}
             \\pagestyle{empty}
             \\usepackage{CJK}
             \\usepackage{mathrsfs}
