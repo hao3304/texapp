@@ -19,6 +19,7 @@ module.exports = class extends Base {
             });
             let filepath = process.cwd() + `\\tex\\${timestamp}.tex`;
             const rep =  await cmd(`cd tex && pdflatex ${filepath} `);
+            console.log(rep);
             this.download(path.join(think.ROOT_PATH, `./tex/${timestamp}.pdf`));
         }else{
             this.display();
