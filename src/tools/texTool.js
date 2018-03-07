@@ -19,12 +19,16 @@ exports.getTex = function(max,min,col,row){
         }
     }
     let tpl = `
-        \\documentclass[12pt,a4paper]{article}
+            \\documentclass[12pt,a4paper]{article}
             \\pagestyle{empty}
             \\usepackage{CJK}
             \\usepackage{mathrsfs}
             \\usepackage{amsmath}
             \\usepackage{bm}
+            \\begin{document}
+             \\begin{CJK}{UTF8}{gkai}
+                \\LARGE 口算练习题 \\\\
+            \\end{CJK}
             \\LARGE
             \\begin{align*}
             ${data.join("")}
