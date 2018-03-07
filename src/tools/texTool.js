@@ -25,7 +25,6 @@ exports.getTex = function(max,min,col,row){
             \\usepackage{mathrsfs}
             \\usepackage{amsmath}
             \\usepackage{bm}
-            \\usepackage[cmintegrals]{newtxmath}
             \\begin{CJK}{UTF8}{gkai}
             \\LARGE 口算练习题 \\\\
             \\end{CJK}
