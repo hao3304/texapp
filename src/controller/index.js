@@ -18,7 +18,7 @@ module.exports = class extends Base {
                     content:tpl
                 }]
             });
-            let filepath = process.cwd() + `\\tex\\${timestamp}.tex`;
+            let filepath = process.cwd() + `/tex/${timestamp}.tex`;
            // const rep =  await cmd(`cd tex && pdflatex ${filepath} `);
            //
            //  cmd(`pdflatex ${filepath}`).then(out => {
