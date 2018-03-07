@@ -20,11 +20,11 @@ exports.getTex = function(max,min,col,row){
     }
     let tpl = `
             \\pagestyle{empty}
-            \\usepackage{CJK}%中文包
-            \\usepackage{mathrsfs}%用于产生一种数学用的花体字
-            \\usepackage{amsmath}%数学符号
-            \\usepackage{bm}%专门处理数学粗体的bm宏包
-            \\usepackage[cmintegrals]{newtxmath}%高质量数学字体/黑体
+            \\usepackage{CJK}
+            \\usepackage{mathrsfs}
+            \\usepackage{amsmath}
+            \\usepackage{bm}
+            \\usepackage[cmintegrals]{newtxmath}
             \\begin{CJK}{UTF8}{gkai}
             \\LARGE 口算练习题 \\\\
             \\end{CJK}
