@@ -25,7 +25,7 @@ module.exports = class extends Base {
             }).catch(err => {
                 console.log('err =', err)
             })
-            this.display();
+           // this.display();
            // console.log(rep);
           //  this.download(path.join(think.ROOT_PATH, `./tex/${timestamp}.pdf`));
         }else{
