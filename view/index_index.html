@@ -6,35 +6,90 @@
     <title>试卷生成测试</title>
     <script src="https://cdn.jsdelivr.net/npm/vue"></script>
     <style>
+        body,html{
+            height: 100%;
+            padding: 0;
+            margin: 0;
+            overflow: hidden;
+        }
 
+        .table{
+            width: 100%;
+        }
+
+        .table tr{
+            line-height: 28px;
+        }
+        .table tr td:first-child{
+            text-align: right;
+        }
     </style>
 </head>
 <body>
-<div id="app">
-    简单配置
+<div id="app" style="height: 100%;">
+    <form action="/index" style="float: left;width:300px;margin-left: 20px;" method="post">
+        <fieldset>
+            <legend>
+                简单配置
+            </legend>
+            <table class="table">
+                <tr>
+                    <td>标题：</td>
+                    <td><input type="text" name="title" value="基础练习"></td>
+                </tr>
+                <tr>
+                    <td>算法：</td>
+                    <td><input type="radio" value="+" name="method" checked>加法
+                        <input type="radio" value="\times" name="method">乘法</td>
+                </tr>
+                <tr>
+                    <td>列数：</td>
+                    <td><input name="col" type="number" value="4"></td>
+                </tr>
+                <tr>
+                    <td>行数：</td>
+                    <td><input name="row" type="number" value="10"></td>
+                </tr>
+                <tr>
+                    <td>最大值：</td>
+                    <td><input name="max" type="number" value="99"></td>
+                </tr>
+                <tr>
+                    <td>最小值：</td>
+                    <td><input name="min" type="number" value="10"></td>
+                </tr>
+            </table>
 
-    <form action="/index" method="post">
-
-        <h5>算法：加法</h5>
-        <p>
-            列数：<input name="col" type="number" value="4">
-        </p>
-        <p>
-            行数：<input name="row" type="number" value="10">
-        </p>
-        <p>
-            最大值：<input name="max" type="number" value="99">
-        </p>
-        <p>
-            最小值：<input name="min" type="number" value="10">
-        </p>
-
-        <button type="submit">生成</button>
+            <div style="text-align: center;margin-top: 10px;">
+                <button type="submit" style="width: 100px;">生成</button>
+            </div>
+        </fieldset>
     </form>
+
+    <div style="padding-left:360px;height: 100%">
+        <embed id="pdf" style="display: none" src="" type="application/pdf" width="100%" height="100%">
+    </div>
 </div>
 </body>
 </html>
 <script>
+
+    function getQueryString(name) {
+        var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i");
+        var r = window.location.search.substr(1).match(reg);
+        if (r != null) return unescape(r[2]); return null;
+    }
+
+    (function () {
+        var id = getQueryString("id");
+        if(id) {
+           var pdf =  document.getElementById("pdf")
+            pdf.style.display='block';
+            pdf.src = "/tex/" + id + '.pdf';
+        }
+    })()
+
+
     // var app = new Vue({
     //     el: '#app',
     //     data: {

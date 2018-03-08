@@ -1,8 +1,8 @@
 
 
-exports.getTex = function(max,min,col,row){
+exports.getTex = function(max,min,col,row,title,method){
     const range = [min,max];
-    const symbol = "+";
+    const symbol = method||"+";
     let data = [];
     for(let i = 0;i< row; i ++) {
         for(let j = 0; j < col; j++) {
@@ -26,8 +26,8 @@ exports.getTex = function(max,min,col,row){
             \\usepackage{amsmath}
             \\usepackage{bm}
             \\begin{document}
-             \\begin{CJK}{UTF8}{gkai}
-                \\LARGE 口算练习题 \\\\
+            \\begin{CJK}{UTF8}{gkai}
+                \\LARGE ${title} \\\\
             \\end{CJK}
             \\LARGE
             \\begin{align*}
