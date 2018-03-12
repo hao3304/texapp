@@ -24,7 +24,7 @@ exports.getTex = function(max,min,col,row,title,method){
     let tpl = template(path.join(process.cwd(),"/tex-tpl/test.art"),{
         title:title,
         content:data.join('')
-    };
+    });
 
     return tpl
 }
