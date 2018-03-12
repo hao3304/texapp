@@ -9,6 +9,7 @@
     "lint-fix": "eslint --fix src/"
   },
   "dependencies": {
+    "art-template": "^4.12.2",
     "cmd-promise": "^1.2.0",
     "level": "^3.0.0",
     "mkfiles": "^1.6.1",

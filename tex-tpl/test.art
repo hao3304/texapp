@@ -1,0 +1,15 @@
+\\documentclass[12pt,a4paper]{article}
+\\pagestyle{empty}
+\\usepackage{CJK}
+\\usepackage{mathrsfs}
+\\usepackage{amsmath}
+\\usepackage{bm}
+\\begin{document}
+\\begin{CJK}{UTF8}{gkai}
+    \\LARGE {{title}} \\\\
+\\end{CJK}
+\\LARGE
+\\begin{align*}
+    {{content}}
+\\end{align*}
+\\end{document}

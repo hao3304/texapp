@@ -1,4 +1,5 @@
-
+const path = require('path');
+const template = require('art-template');
 
 exports.getTex = function(max,min,col,row,title,method){
     const range = [min,max];
@@ -18,23 +19,10 @@ exports.getTex = function(max,min,col,row,title,method){
             data.push(val);
         }
     }
-    let tpl = `
-            \\documentclass[12pt,a4paper]{article}
-            \\pagestyle{empty}
-            \\usepackage{CJK}
-            \\usepackage{mathrsfs}
-            \\usepackage{amsmath}
-            \\usepackage{bm}
-            \\begin{document}
-            \\begin{CJK}{UTF8}{gkai}
-                \\LARGE ${title} \\\\
-            \\end{CJK}
-            \\LARGE
-            \\begin{align*}
-            ${data.join("")}
-            \\end{align*}
-            \\end{document}
-    `;
+    let tpl = template(path.join(process.cwd(),"/tex-tpl/test.art"),{
+        title:title,
+        content:data.join('')
+    });
     return tpl
 }
 
