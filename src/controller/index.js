@@ -2,7 +2,8 @@ const Base = require('./base.js');
 const cmd = require('cmd-promise')
 const Tex = require('../tools/texTool');
 const mkfiles = require('mkfiles');
-const path = require('path');
+const levelDB = require("../config/db");
+
 
 module.exports = class extends Base {
     async indexAction() {
@@ -21,24 +22,14 @@ module.exports = class extends Base {
             const rep =  await cmd(`cd www/tex && pdflatex ${filepath} `);
             console.log(rep);
             this.redirect(`/index?id=${timestamp}`)
-            // this.download(path.join(think.ROOT_PATH, `./www/tex/${timestamp}.pdf`));
         }else{
-            this.display();
+            return this.display();
         }
     }
 
-
-    pdfAction() {
-
-        const { id } = this.ctx.query;
-
-        if(id) {
-
-
-        }else{
-            this.ctx.body = "id is invalid";
-        }
-
+   async testAction() {
+        let {prefix,limit} = this.ctx.query;
+        let result = await levelDB.randomFind({prefix,limit});
+        this.ctx.body = result;
     }
-
 };

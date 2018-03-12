@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "cmd-promise": "^1.2.0",
+    "level": "^3.0.0",
     "mkfiles": "^1.6.1",
     "think-cache": "^1.0.0",
     "think-cache-file": "^1.0.8",
