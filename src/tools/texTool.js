@@ -19,10 +19,12 @@ exports.getTex = function(max,min,col,row,title,method){
             data.push(val);
         }
     }
+
+    template.defaults.escape = false;
     let tpl = template(path.join(process.cwd(),"/tex-tpl/test.art"),{
         title:title,
         content:data.join('')
-    });
+    };
 
     return tpl
 }
