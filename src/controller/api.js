@@ -25,7 +25,7 @@ module.exports = class extends Base {
             return this.ctx.body = {
                 code:0,
                 message:'',
-                response: sid +'.tex'
+                response: sid +'.pdf'
             }
             // console.log(rep);
             // this.redirect(`/index?id=${sid}`)
