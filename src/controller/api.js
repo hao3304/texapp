@@ -9,8 +9,8 @@ const shortid = require('shortid');
 module.exports = class extends Base {
     async texAction() {
         if(this.ctx.isPost) {
-            const {col=4,row=10,title,prefix} = this.post();
-            let tpl = Tex.getTex(parseInt(col),parseInt(row),title,prefix);
+            const {col=4,row=10,title="",prefix="A1"} = this.post();
+            let tpl = await Tex.getTex(parseInt(col),parseInt(row),title,prefix);
             let sid = shortid.generate();
             mkfiles({
                 path: './www/tex',
