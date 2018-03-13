@@ -9,7 +9,7 @@ const shortid = require('shortid');
 module.exports = class extends Base {
     async texAction() {
         if(this.ctx.isPost) {
-            const {col=4,row=10,title="",prefix="A1"} = this.post();
+            const {col=4,row=10,title="标题",prefix} = this.post();
             let tpl = await Tex.getTex(parseInt(col),parseInt(row),title,prefix);
             let sid = shortid.generate();
             mkfiles({
@@ -21,8 +21,8 @@ module.exports = class extends Base {
             });
             let filepath = process.cwd() + `/www/tex/${sid}.tex`;
             const rep =  await cmd(`cd www/tex && pdflatex ${filepath} `);
-
-            this.ctx.body = {
+            console.log(rep);
+            return this.ctx.body = {
                 code:0,
                 message:'',
                 response: sid +'.tex'

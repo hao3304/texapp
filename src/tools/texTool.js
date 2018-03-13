@@ -8,7 +8,7 @@ exports.getTex =async function(col,row,title,prefix){
 
     for(let i = 0;i< row; i ++) {
         for(let j = 0; j < col; j++) {
-            let val = getVal(i*j + j)
+            let val = getVal(data[i*j + j])
             if(i == 0 && j !=(col-1)) {
                 val += "\\quad";
             }else if(j == (col-1)) {
@@ -17,19 +17,17 @@ exports.getTex =async function(col,row,title,prefix){
             if(j != 0 ){
                 val = "&" +val;
             }
-            data.push(val);
+            result.push(val);
         }
     }
-
     template.defaults.escape = false;
     let tpl = template(path.join(process.cwd(),"/tex-tpl/test.art"),{
         title:title,
-        content:data.join('')
+        content:result.join('')
     });
-
     return tpl
 }
 
-function getVal(range) {
-    return ""
+function getVal(obj) {
+    return obj.value.replace(/=/g,"&=").replace(/x/g,"\\times").replace(/\//g,'\\div');
 }
