@@ -7,7 +7,7 @@ exports.getTex =async function(col,row,title,prefix){
     let result = [];
     for(let i = 0;i< row; i ++) {
         for(let j = 0; j < col; j++) {
-            let val = getVal(data[i*j + j])
+            let val = getVal(data[i*col + j])
             if(i == 0 && j !=(col-1)) {
                 val += "\\quad";
             }else if(j == (col-1)) {
