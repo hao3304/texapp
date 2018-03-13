@@ -5,7 +5,6 @@ const levelDB = require("../config/db");
 exports.getTex =async function(col,row,title,prefix){
     let data = await levelDB.randomFind({prefix,limit:col*row});
     let result = [];
-
     for(let i = 0;i< row; i ++) {
         for(let j = 0; j < col; j++) {
             let val = getVal(data[i*j + j])
@@ -29,5 +28,5 @@ exports.getTex =async function(col,row,title,prefix){
 }
 
 function getVal(obj) {
-    return obj.value.replace(/=/g,"&=").replace(/x/g,"\\times").replace(/\//g,'\\div');
+    return obj?obj.value.replace(/=/g,"&=").replace(/x/g,"\\times").replace(/\//g,'\\div'):"";
 }
