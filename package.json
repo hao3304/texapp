@@ -13,6 +13,7 @@
     "cmd-promise": "^1.2.0",
     "level": "^3.0.0",
     "mkfiles": "^1.6.1",
+    "shortid": "^2.2.8",
     "think-cache": "^1.0.0",
     "think-cache-file": "^1.0.8",
     "think-logger3": "^1.0.0",
