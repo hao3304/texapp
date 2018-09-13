@@ -22,12 +22,6 @@ module.exports = class extends Base {
             let filepath = process.cwd() + `/www/tex/${sid}.tex`;
             const rep =  await cmd(`cd www/tex && pdflatex ${filepath} `);
             console.log(rep);
-            return this.ctx.body = {
-                code:0,
-                message:'',
-                response: sid +'.pdf'
-            }
-            console.log(rep);
             this.redirect(`/index?id=${sid}`)
         }else{
             // return this.display();
