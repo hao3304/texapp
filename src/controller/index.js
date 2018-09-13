@@ -7,7 +7,7 @@ const shortid = require('shortid');
 
 
 module.exports = class extends Base {
-    async texAction() {
+    async indexAction() {
         if(this.ctx.isPost) {
             const {col=4,row=10,title="标题",prefix} = this.post();
             let tpl = await Tex.getTex(parseInt(col),parseInt(row),title,prefix);
@@ -27,17 +27,11 @@ module.exports = class extends Base {
                 message:'',
                 response: sid +'.pdf'
             }
-            // console.log(rep);
-            // this.redirect(`/index?id=${sid}`)
+            console.log(rep);
+            this.redirect(`/index?id=${sid}`)
         }else{
             // return this.display();
-            this.ctx.body = "不支持该方法";
+            this.display();
         }
     }
-
-   async testAction() {
-        let {prefix="",limit=1} = this.ctx.query;
-        let result = await levelDB.randomFind({prefix,limit});
-        this.ctx.body = result;
-    }
-};
+}
